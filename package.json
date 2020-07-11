@@ -42,7 +42,7 @@
     "deepmerge": "^4.2.2",
     "fastest-validator": "^0.6.19",
     "pluralize": "^8.0.0",
-    "stripe": "^7.14.0",
+    "stripe": "^8.69.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {

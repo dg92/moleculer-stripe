@@ -10,7 +10,7 @@ const Pluralize = require('pluralize')
 const Decamelize = require('decamelize')
 const UUIDV4 = require('uuid/v4')
 
-const StripeMethods = { create: true, retrieve: true, update: true, del: true, list: true, confirm: false, capture: false, cancel: false, reject: false }
+const StripeMethods = { create: true, retrieve: true, update: true, del: true, list: true, confirm: false, capture: false, cancel: false, reject: false, listLineItems: true, }
 
 module.exports = {
   StripeMethods(stripeResource, options = StripeMethods, single = false, accessResource) {
@@ -69,7 +69,11 @@ module.exports = {
           }
           return list
         }
-      }
+      },
+      listLineItems: {
+        params: { id: 'string' },
+        handler: ({ stripe, params, meta }) => accessResource(stripe).listLineItems(params.id, module.exports.extra(meta))
+      },
     }
     return {
       actions: Object.entries(actions)
